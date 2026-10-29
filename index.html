@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Reflex Reactor — Premium futuristic esports reaction speed game. Built for IKARUS competition at KG Reddy College.">
+  <meta name="theme-color" content="#060913">
+  <title>REFLEX REACTOR — Premium Reaction Speed Game | IKARUS Edition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-futuristic">
+  <!-- Interactive Ambient Cyber Background Canvas -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- NAVIGATION BAR -->
+  <header class="site-header" role="banner">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Reflex Reactor Home">
+        <div class="brand-icon-wrap">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span class="icon-pulse"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">REFLEX<span class="accent-glow">REACTOR</span></span>
+          <span class="brand-tagline">IKARUS EDITION</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#arena" class="nav-link">Arena</a>
+        <a href="#how-to-play" class="nav-link">How to Play</a>
+        <a href="#statistics" class="nav-link">Statistics</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Sound Toggle -->
+        <button id="sound-toggle-btn" class="action-btn" aria-label="Toggle Sound" title="Toggle Sound (Mute/Unmute)">
+          <svg id="sound-icon-on" class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"></path>
+          </svg>
+          <svg id="sound-icon-off" class="btn-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <span class="btn-label" id="sound-label">AUDIO ON</span>
+        </button>
+
+        <!-- Quick Jump to Arena -->
+        <a href="#arena" class="cta-pill-btn">
+          <span>ENTER ARENA</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-glow-blob" aria-hidden="true"></div>
+      <div class="section-container hero-container">
+        <div class="hero-badge">
+          <span class="live-indicator"></span>
+          <span>REACTION TRAINING SYSTEM &bull; COMPETITION READY</span>
+        </div>
+
+        <h1 class="hero-heading">
+          YOUR REFLEXES.<br>
+          <span class="gradient-text">YOUR LIMITS.</span>
+        </h1>
+
+        <p class="hero-subheading">
+          High-frequency reactor cores ignite at sub-second intervals. Strike activated panels with microsecond precision, compound streak multipliers, and conquer cognitive velocity.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#arena" class="btn-primary" id="hero-start-btn">
+            <span class="btn-shine"></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>START GAME</span>
+          </a>
+          <a href="#how-to-play" class="btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>HOW TO PLAY</span>
+          </a>
+        </div>
+
+        <!-- 3 Feature Badges -->
+        <div class="hero-features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-box cyan-glow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 14 14"></polyline>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Instant Feedback</h3>
+              <p>Hardware-accurate <code>performance.now()</code> millisecond measurement with immediate visual impact.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box purple-glow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Progressive Difficulty</h3>
+              <p>Targets accelerate adaptively as score climbs, challenging apex hand-eye coordination.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-box blue-glow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Personal Best</h3>
+              <p>Persistent local tracking of fastest reaction latency, high scores, and lifetime accuracy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME DASHBOARD (ARENA) -->
+    <section id="arena" class="arena-section">
+      <div class="section-container arena-container">
+        
+        <div class="arena-header">
+          <div class="section-title-wrap">
+            <span class="sub-badge">REACTOR CORE STAGE</span>
+            <h2 class="section-heading">NEURAL ARENA</h2>
+          </div>
+
+          <!-- Controls & Difficulty Selectors -->
+          <div class="arena-controls-group">
+            <button type="button" id="ai-demo-toggle-btn" class="ai-demo-btn" aria-label="Toggle AI Auto-Pilot Demonstration" title="Let the AI play autonomously (Hotkey: D)">
+              <span class="ai-bot-icon">🤖</span>
+              <span id="ai-demo-label" class="ai-btn-text">AI AUTO-PILOT: OFF</span>
+              <span class="ai-status-pulse"></span>
+            </button>
+
+            <div class="difficulty-picker" role="radiogroup" aria-label="Select Game Difficulty">
+              <span class="picker-label">MODE:</span>
+              <button type="button" class="diff-btn active" data-difficulty="easy" role="radio" aria-checked="true">
+                <span class="diff-dot easy"></span>
+                EASY
+              </button>
+              <button type="button" class="diff-btn" data-difficulty="medium" role="radio" aria-checked="false">
+                <span class="diff-dot medium"></span>
+                MEDIUM
+              </button>
+              <button type="button" class="diff-btn" data-difficulty="hard" role="radio" aria-checked="false">
+                <span class="diff-dot hard"></span>
+                HARD
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN GAME CARD -->
+        <div class="game-dashboard-card" id="game-card">
+          <!-- Cyberpunk corner accents -->
+          <div class="cyber-corner top-left"></div>
+          <div class="cyber-corner top-right"></div>
+          <div class="cyber-corner bottom-left"></div>
+          <div class="cyber-corner bottom-right"></div>
+
+          <!-- Dashboard Stats HUD -->
+          <div class="dashboard-hud" role="region" aria-label="Game HUD">
+            <!-- Score Card -->
+            <div class="hud-item score-hud">
+              <div class="hud-label">SCORE</div>
+              <div class="hud-value-row">
+                <span id="hud-score" class="hud-value neon-cyan">0</span>
+                <span id="streak-badge" class="streak-badge hidden" title="Streak Multiplier">
+                  <span class="streak-icon">🔥</span>
+                  <span id="streak-text">x1.0</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Countdown Timer Card -->
+            <div class="hud-item timer-hud">
+              <div class="hud-label">TIME REMAINING</div>
+              <div class="timer-dial-wrap">
+                <svg class="timer-ring-svg" viewBox="0 0 100 100">
+                  <circle class="timer-ring-bg" cx="50" cy="50" r="42" />
+                  <circle id="timer-ring-progress" class="timer-ring-bar" cx="50" cy="50" r="42" />
+                </svg>
+                <div class="timer-number-wrap">
+                  <span id="hud-timer" class="hud-value">30</span><span class="hud-unit">s</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hits & Misses -->
+            <div class="hud-item hits-hud">
+              <div class="hud-label">ACCURACY RECORD</div>
+              <div class="hits-misses-row">
+                <div class="stat-mini">
+                  <span class="stat-mini-label">HITS</span>
+                  <span id="hud-hits" class="stat-mini-value hit-color">0</span>
+                </div>
+                <div class="stat-divider">/</div>
+                <div class="stat-mini">
+                  <span class="stat-mini-label">MISS</span>
+                  <span id="hud-misses" class="stat-mini-value miss-color">0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reaction Time HUD -->
+            <div class="hud-item reaction-hud">
+              <div class="hud-label">BEST REACTION</div>
+              <div class="reaction-value-row">
+                <span id="hud-best-reaction" class="hud-value neon-purple">--</span>
+                <span class="hud-unit">ms</span>
+              </div>
+              <div class="sub-stat-row">
+                <span>LAST: </span>
+                <span id="hud-last-reaction">-- ms</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- REACTION GRID STAGE -->
+          <div class="reactor-grid-wrapper">
+            <div class="reactor-status-bar" id="game-status-bar" aria-live="polite">
+              <span class="status-pulse-dot"></span>
+              <span id="game-status-message">STANDBY &bull; SELECT DIFFICULTY AND PRESS START</span>
+            </div>
+
+            <!-- Canvas for interactive particles -->
+            <canvas id="effects-canvas" class="effects-canvas" aria-hidden="true"></canvas>
+
+            <!-- 3x3 Reactive Panels Grid -->
+            <div class="reactor-grid" id="reactor-grid" role="grid" aria-label="Reactor Panel Grid">
+              <button type="button" class="reactor-panel" data-index="0" aria-label="Panel 1" tabindex="0">
+                <span class="panel-key-hint">1</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="1" aria-label="Panel 2" tabindex="0">
+                <span class="panel-key-hint">2</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="2" aria-label="Panel 3" tabindex="0">
+                <span class="panel-key-hint">3</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="3" aria-label="Panel 4" tabindex="0">
+                <span class="panel-key-hint">4</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="4" aria-label="Panel 5" tabindex="0">
+                <span class="panel-key-hint">5</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="5" aria-label="Panel 6" tabindex="0">
+                <span class="panel-key-hint">6</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="6" aria-label="Panel 7" tabindex="0">
+                <span class="panel-key-hint">7</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="8" aria-label="Panel 8" tabindex="0">
+                <span class="panel-key-hint">8</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+              <button type="button" class="reactor-panel" data-index="8" aria-label="Panel 9" tabindex="0">
+                <span class="panel-key-hint">9</span>
+                <span class="panel-core"></span>
+                <span class="panel-glow-ring"></span>
+              </button>
+            </div>
+
+            <!-- OVERLAY: STATE 1 — WELCOME / START -->
+            <div id="start-overlay" class="grid-overlay active">
+              <div class="overlay-card glass-panel">
+                <div class="overlay-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="overlay-icon">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                  </svg>
+                </div>
+                <h3 class="overlay-title">INITIATE REACTOR</h3>
+                <p class="overlay-desc">
+                  Strike lit panels before they decay. Maintain accuracy to ignite streak multipliers. 30 seconds on the clock.
+                </p>
+                <div class="overlay-controls">
+                  <button type="button" id="start-game-btn" class="btn-primary btn-large">
+                    <span class="btn-shine"></span>
+                    <span>ENGAGE PROTOCOL [SPACE]</span>
+                  </button>
+                  <button type="button" id="start-ai-demo-btn" class="btn-secondary">
+                    <span>🤖 RUN AI AUTO-DEMO [D]</span>
+                  </button>
+                </div>
+                <div class="keyboard-quick-tips">
+                  <span>💡 Tip: Use mouse, touchscreen, or numeric keys <strong>1-9</strong> to trigger panels.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- OVERLAY: COUNTDOWN (3... 2... 1... GO!) -->
+            <div id="countdown-overlay" class="grid-overlay hidden" aria-hidden="true">
+              <div class="countdown-display">
+                <span id="countdown-number" class="countdown-text">3</span>
+                <span class="countdown-subtext">GET READY</span>
+              </div>
+            </div>
+
+            <!-- OVERLAY: STATE 3 — RESULTS -->
+            <div id="results-overlay" class="grid-overlay hidden" aria-modal="true" role="dialog" aria-labelledby="results-title">
+              <div class="overlay-card results-card glass-panel">
+                <div class="results-header">
+                  <span class="results-badge" id="results-rank-badge">SSS RANK &bull; NEURAL OVERCLOCKER</span>
+                  <h3 id="results-title" class="results-title">SESSION COMPLETE</h3>
+                  <p id="results-feedback" class="results-feedback">Exceptional synaptic response. Your reflexes rival competitive esports athletes.</p>
+                </div>
+
+                <!-- High Score Banner -->
+                <div id="new-record-banner" class="new-record-banner hidden">
+                  <span class="banner-star">★</span>
+                  <span>NEW PERSONAL BEST ACHIEVED!</span>
+                  <span class="banner-star">★</span>
+                </div>
+
+                <!-- Detailed Metrics Grid -->
+                <div class="results-grid">
+                  <div class="result-tile">
+                    <span class="result-tile-label">FINAL SCORE</span>
+                    <span id="result-score" class="result-tile-value neon-cyan">0</span>
+                  </div>
+                  <div class="result-tile">
+                    <span class="result-tile-label">TOTAL HITS</span>
+                    <span id="result-hits" class="result-tile-value hit-color">0</span>
+                  </div>
+                  <div class="result-tile">
+                    <span class="result-tile-label">TOTAL MISSES</span>
+                    <span id="result-misses" class="result-tile-value miss-color">0</span>
+                  </div>
+                  <div class="result-tile">
+                    <span class="result-tile-label">ACCURACY</span>
+                    <span id="result-accuracy" class="result-tile-value">0%</span>
+                  </div>
+                  <div class="result-tile">
+                    <span class="result-tile-label">BEST REACTION</span>
+                    <span id="result-best-time" class="result-tile-value neon-purple">-- ms</span>
+                  </div>
+                  <div class="result-tile">
+                    <span class="result-tile-label">AVERAGE REACTION</span>
+                    <span id="result-avg-time" class="result-tile-value">-- ms</span>
+                  </div>
+                </div>
+
+                <!-- Results Action Buttons -->
+                <div class="results-actions">
+                  <button type="button" id="play-again-btn" class="btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg">
+                      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                    </svg>
+                    <span>PLAY AGAIN [SPACE]</span>
+                  </button>
+                  <button type="button" id="share-results-btn" class="btn-secondary" title="Copy stats card to clipboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span id="share-btn-text">COPY STATS CARD</span>
+                  </button>
+                  <button type="button" id="back-home-btn" class="btn-ghost">
+                    <span>BACK TO DASHBOARD</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- OVERLAY: PAUSE (When Esc is pressed) -->
+            <div id="pause-overlay" class="grid-overlay hidden" aria-modal="true" role="dialog">
+              <div class="overlay-card glass-panel pause-card">
+                <h3 class="overlay-title">SIMULATION PAUSED</h3>
+                <p class="overlay-desc">System clock frozen. Take a breath or resume when ready.</p>
+                <div class="overlay-controls">
+                  <button type="button" id="resume-btn" class="btn-primary">RESUME [ESC]</button>
+                  <button type="button" id="abort-btn" class="btn-secondary">ABORT RUN</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Dashboard Footer Info -->
+          <div class="dashboard-footer-bar">
+            <div class="hotkey-legend">
+              <span class="legend-item"><kbd>1</kbd>-<kbd>9</kbd> Panel Hits</span>
+              <span class="legend-item"><kbd>SPACE</kbd> Start/Replay</span>
+              <span class="legend-item"><kbd>ESC</kbd> Pause</span>
+              <span class="legend-item"><kbd>D</kbd> AI Auto-Pilot</span>
+            </div>
+            <div class="active-mode-tag">
+              <span>ACTIVE DIFFICULTY:</span>
+              <strong id="active-difficulty-display" class="highlight-text">EASY (RECRUIT)</strong>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW TO PLAY SECTION -->
+    <section id="how-to-play" class="instructions-section">
+      <div class="section-container">
+        <div class="section-title-wrap text-center">
+          <span class="sub-badge">SYSTEM PROTOCOL</span>
+          <h2 class="section-heading">HOW TO PLAY</h2>
+          <p class="section-subheading">Master cognitive response kinetics in 4 straightforward principles.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+              </svg>
+            </div>
+            <h3 class="step-title">Select Mode & Start</h3>
+            <p class="step-desc">Pick Easy, Medium, or Hard difficulty. Press Start Game or tap Spacebar to begin the 30-second run.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="8"></circle>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="22"></line>
+                <line x1="20" y1="12" x2="22" y2="12"></line>
+                <line x1="2" y1="12" x2="4" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="step-title">Spot The Active Core</h3>
+            <p class="step-desc">One reactor panel will illuminate with a neon glow at a time. Zero in on the illuminated coordinate immediately.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="step-title">Strike Instantly</h3>
+            <p class="step-desc">Click, tap, or press the corresponding number key (1–9). Earn +10 base points. Each 5x streak activates score multipliers!</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+            </div>
+            <h3 class="step-title">Beware Misses & Expiry</h3>
+            <p class="step-desc">Clicking an inactive panel or letting an active target expire counts as a miss and breaks your streak multiplier.</p>
+          </div>
+        </div>
+
+        <!-- Rules Notice Box -->
+        <div class="rules-notice-box">
+          <div class="notice-icon">⚡</div>
+          <div class="notice-body">
+            <h4>STRICT PRECISION PROTOCOL</h4>
+            <p>
+              Only one panel is active at any time. Double clicks on a resolved target are ignored. Millisecond reaction timing is measured with microsecond-level accuracy through <code>performance.now()</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATISTICS & LEADERBOARD SECTION -->
+    <section id="statistics" class="stats-section">
+      <div class="section-container">
+        <div class="section-title-wrap text-center">
+          <span class="sub-badge">LIFETIME TELEMETRY</span>
+          <h2 class="section-heading">NEURAL PERFORMANCE STATS</h2>
+          <p class="section-subheading">Computed exclusively from verified gameplay sessions stored in your browser.</p>
+        </div>
+
+        <div class="lifetime-stats-grid">
+          <div class="stat-big-card">
+            <div class="stat-card-glow"></div>
+            <span class="stat-card-title">ALL-TIME HIGH SCORE</span>
+            <span id="stats-high-score" class="stat-card-value neon-cyan">0</span>
+            <span class="stat-card-sub">Global career peak</span>
+          </div>
+
+          <div class="stat-big-card">
+            <div class="stat-card-glow purple"></div>
+            <span class="stat-card-title">BEST REACTION SPEED</span>
+            <div class="stat-val-unit">
+              <span id="stats-best-speed" class="stat-card-value neon-purple">--</span>
+              <span class="stat-card-unit">ms</span>
+            </div>
+            <span class="stat-card-sub">Fastest registered hit</span>
+          </div>
+
+          <div class="stat-big-card">
+            <div class="stat-card-glow green"></div>
+            <span class="stat-card-title">OVERALL ACCURACY</span>
+            <span id="stats-lifetime-accuracy" class="stat-card-value neon-green">0%</span>
+            <span class="stat-card-sub">Hits vs Total Incursions</span>
+          </div>
+
+          <div class="stat-big-card">
+            <div class="stat-card-glow blue"></div>
+            <span class="stat-card-title">LIFETIME SUCCESSFUL HITS</span>
+            <span id="stats-lifetime-hits" class="stat-card-value neon-blue">0</span>
+            <span class="stat-card-sub">Total verified targets neutralized</span>
+          </div>
+
+          <div class="stat-big-card">
+            <div class="stat-card-glow red"></div>
+            <span class="stat-card-title">TOTAL MISSES RECORDED</span>
+            <span id="stats-lifetime-misses" class="stat-card-value miss-color">0</span>
+            <span class="stat-card-sub">Inaccurate clicks & expired targets</span>
+          </div>
+
+          <div class="stat-big-card">
+            <div class="stat-card-glow gold"></div>
+            <span class="stat-card-title">SESSIONS COMPLETED</span>
+            <span id="stats-sessions-count" class="stat-card-value neon-gold">0</span>
+            <span class="stat-card-sub">30-second reactor trials</span>
+          </div>
+        </div>
+
+        <!-- Esports Reaction Benchmark Guide -->
+        <div class="benchmark-table-card glass-panel">
+          <h3 class="benchmark-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="bench-svg">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            REACTION TIME BENCHMARK TIERS
+          </h3>
+          <div class="table-responsive">
+            <table class="benchmark-table">
+              <thead>
+                <tr>
+                  <th>Tier Rank</th>
+                  <th>Latency Window</th>
+                  <th>Classification</th>
+                  <th>Real-World Equivalent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tier-apex">
+                  <td><span class="rank-badge apex">SSS</span></td>
+                  <td><strong>&lt; 190 ms</strong></td>
+                  <td>Neural Overclocker</td>
+                  <td>Tier 1 Professional Esports / F1 Driver</td>
+                </tr>
+                <tr class="tier-elite">
+                  <td><span class="rank-badge elite">S</span></td>
+                  <td><strong>190 – 225 ms</strong></td>
+                  <td>Sub-Synaptic Prodigy</td>
+                  <td>Competitive High-Elo FPS Player</td>
+                </tr>
+                <tr class="tier-pro">
+                  <td><span class="rank-badge pro">A</span></td>
+                  <td><strong>225 – 265 ms</strong></td>
+                  <td>Apex Operator</td>
+                  <td>Above Average Athletic Reflexes</td>
+                </tr>
+                <tr class="tier-standard">
+                  <td><span class="rank-badge standard">B</span></td>
+                  <td><strong>265 – 330 ms</strong></td>
+                  <td>Steady Responder</td>
+                  <td>Average Human Reaction Time (~275ms)</td>
+                </tr>
+                <tr class="tier-novice">
+                  <td><span class="rank-badge novice">C</span></td>
+                  <td><strong>&gt; 330 ms</strong></td>
+                  <td>Recruit Reactor</td>
+                  <td>Warmup / Cognitive Fatigue</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="stats-footer-actions">
+            <button type="button" id="reset-stats-btn" class="btn-ghost-danger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-svg">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+              <span>RESET SAVED RECORDS</span>
+            </button>
+            <span class="stats-notice">Stored locally in your browser sandbox. Privacy-safe, zero telemetry transmission.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="section-container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-icon-wrap small">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <h4 class="footer-brand-title">REFLEX REACTOR</h4>
+            <p class="footer-tagline">React Fast. Score High. Beat Your Best.</p>
+          </div>
+        </div>
+
+        <div class="footer-competition-badge">
+          <span class="badge-label">COLLEGE COMPETITION PROJECT</span>
+          <span class="badge-org">Built for IKARUS &bull; KG Reddy College</span>
+        </div>
+
+        <div class="footer-actions">
+          <a href="#hero" class="btn-back-to-top" aria-label="Return to top of page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+            <span>TOP</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> Reflex Reactor &bull; Precision Reaction Speed System &bull; Pure Client-Side Architecture</p>
+        <div class="engine-status">
+          <span class="engine-dot"></span>
+          <span>Web Audio Engine Active &bull; 60 FPS Fluid Canvas</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript Module -->
+  <script src="script.js"></script>
+</body>
+</html>
+
